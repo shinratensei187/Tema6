@@ -1,0 +1,28 @@
+name: Python applications 
+
+on: [push, pull_requests]
+
+jobs:
+  buiild:
+    
+    runs-on: ubuntu-latest
+
+    steeps:
+    - name: Check out repository code 
+      user: action/checkout@v3
+
+    - name: Set up Python
+      user: action/setup-python@v4
+      with:
+        python-version: '3.x'
+    
+    - name: Install dependencies 
+      run:
+        python -m pip install  upgrade pip
+        pip install -r requirements.txt
+
+
+    - name: Run tests
+      run:
+      python test_main.py 
+    
